@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Athletica Plans</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms" defer></script>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body class="bg-neutral-950 text-neutral-100 min-h-screen">
+    <header class="shadow-md bg-neutral-900 border-b border-neutral-800">
+      <div class="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
+        <h1 class="text-2xl font-semibold text-accent">Athletica Plans</h1>
+        <p class="text-sm text-neutral-400">
+          Encuentra sesiones seguras y enfocadas en tus objetivos.
+        </p>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-10 space-y-10">
+      <section
+        class="bg-neutral-900 border border-neutral-800 rounded-xl shadow-lg p-6 space-y-6"
+      >
+        <h2 class="text-xl font-semibold text-neutral-100">Configura tu búsqueda</h2>
+        <form id="search-form" class="grid gap-6 md:grid-cols-2">
+          <!-- Objetivos (multi) -->
+          <fieldset class="space-y-2 md:col-span-2">
+            <legend class="form-label">Objetivos</legend>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+              <label class="checkbox-option">
+                <input type="checkbox" name="objectives" value="fuerza" />
+                <span>Fuerza</span>
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="objectives" value="hipertrofia" />
+                <span>Hipertrofia</span>
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="objectives" value="resistencia" />
+                <span>Resistencia</span>
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="objectives" value="movilidad" />
+                <span>Movilidad</span>
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="objectives" value="salud" />
+                <span>Salud</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Nivel -->
+          <div class="space-y-2">
+            <label for="level" class="form-label">Nivel</label>
+            <select id="level" name="level" class="form-control" required>
+              <option value="principiante">Principiante</option>
+              <option value="medio" selected>Medio</option>
+              <option value="avanzado">Avanzado</option>
+            </select>
+          </div>
+
+          <!-- Minutos -->
+          <div class="space-y-2">
+            <label for="session_minutes" class="form-label">
+              Minutos de sesión: <span id="minutes-value">45</span>
+            </label>
+            <input
+              id="session_minutes"
+              name="session_minutes"
+              type="range"
+              min="20"
+              max="90"
+              value="45"
+              class="w-full accent-accent"
+            />
+          </div>
+
+          <!-- Patologías -->
+          <fieldset class="space-y-2 md:col-span-2">
+            <legend class="form-label">Patologías a considerar</legend>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <label class="checkbox-option">
+                <input type="checkbox" name="pathologies" value="hombro" />
+                <span>Hombro</span>
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="pathologies" value="lumbar" />
+                <span>Lumbar</span>
+              </label>
+              <label class="checkbox-option">
+                <input type="checkbox" name="pathologies" value="rodilla" />
+                <span>Rodilla</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Término libre -->
+          <div class="space-y-2 md:col-span-2">
+            <label for="query" class="form-label">Término libre</label>
+            <input
+              id="query"
+              name="query"
+              type="text"
+              placeholder="Press mancuernas, tirón, core..."
+              class="form-control"
+            />
+          </div>
+
+          <div class="md:col-span-2 flex flex-wrap items-center gap-4">
+            <button type="submit" class="btn-primary">Buscar</button>
+            <div
+              id="spinner"
+              class="hidden h-5 w-5 border-2 border-neutral-600 border-t-accent rounded-full animate-spin"
+              aria-hidden="true"
+            ></div>
+          </div>
+        </form>
+
+        <div
+          id="error-box"
+          role="alert"
+          class="hidden rounded-lg border border-red-700 bg-red-900/40 px-4 py-3 text-sm text-red-200"
+        ></div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-neutral-100 mb-4">Resultados</h2>
+        <div id="results" class="space-y-6"></div>
+      </section>
+    </main>
+
+    <footer class="py-6 border-t border-neutral-800 bg-neutral-900">
+      <div class="max-w-6xl mx-auto px-4 text-sm text-neutral-400">
+        Disenado para ofrecer rutinas seguras con ajustes segun tus necesidades.
+      </div>
+    </footer>
+
+    <script src="/static/js/app.js" defer></script>
+  </body>
+</html>
